@@ -1,0 +1,27 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/records/record-index.css' %}"/>
+{% endblock %} 
+{% block content %}
+<section class="page-header">
+  <h1>Record List</h1>
+</section>
+
+<section class="card-container">
+  {% for record in records %}
+    <div class="card">
+      <a href="{% url 'record-detail' record.id %}">
+        <div class="card-img-container">
+          {% if record.album_cover %}
+            <img src="{{ record.album_cover.url }}" alt="{{ record.name }} album cover" />
+          {% else %}
+            <img src="{% static 'images/default-album-cover.svg' %}" alt="Default album cover" />
+          {% endif %}
+        </div>
+      </a>
+    </div>
+  {% endfor %}
+</section>
+
+{% endblock %}

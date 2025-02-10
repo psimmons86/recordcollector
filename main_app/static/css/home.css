@@ -1,0 +1,34 @@
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+  padding: 20px;
+}
+
+.welcome-container h1 {
+  font-size: 5rem;
+  margin-bottom: 20px;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.welcome-container p {
+  font-size: 2.4rem;
+  color: #666;
+  max-width: 600px;
+  line-height: 1.4;
+}
+
+@media only screen and (max-width: 768px) {
+  .welcome-container h1 {
+    font-size: 3.6rem;
+  }
+
+  .welcome-container p {
+    font-size: 2rem;
+  }
+}

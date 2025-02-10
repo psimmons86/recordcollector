@@ -76,8 +76,15 @@ WSGI_APPLICATION = 'recordcollector.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'recordcollector',
+        'USER': 'neondb_owner',
+        'PASSWORD': 'npg_NH6PexLF4BZy',
+        'HOST': 'ep-orange-tree-aahcmexj-pooler.westus3.azure.neon.tech',
+        'PORT': '5432',
+        'OPTIONS': {
+            'sslmode': 'require',
+        },
     }
 }
 
@@ -117,6 +124,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# Media files (Uploaded files)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

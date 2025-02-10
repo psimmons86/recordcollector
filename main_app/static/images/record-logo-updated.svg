@@ -1,0 +1,15 @@
+<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Main record circle -->
+  <circle cx="50" cy="50" r="45" stroke="black" stroke-width="3" fill="#f0c040" />
+  
+  <!-- Record grooves -->
+  <circle cx="50" cy="50" r="40" stroke="#333" stroke-width="1" fill="none" opacity="0.3" />
+  <circle cx="50" cy="50" r="35" stroke="#333" stroke-width="1" fill="none" opacity="0.3" />
+  <circle cx="50" cy="50" r="30" stroke="#333" stroke-width="1" fill="none" opacity="0.3" />
+  <circle cx="50" cy="50" r="25" stroke="#333" stroke-width="1" fill="none" opacity="0.3" />
+  <circle cx="50" cy="50" r="20" stroke="#333" stroke-width="1" fill="none" opacity="0.3" />
+  
+  <!-- Center hole and label -->
+  <circle cx="50" cy="50" r="15" fill="#ffcc00" stroke="black" stroke-width="2" />
+  <circle cx="50" cy="50" r="3" fill="black" />
+</svg>

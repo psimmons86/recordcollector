@@ -1,0 +1,22 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/records/record-detail.css' %}" />
+{% endblock %} 
+{% block content %}
+<section class="record-container">
+  <div class="record-img">
+    {% if record.album_cover %}
+      <img src="{{ record.album_cover.url }}" alt="{{ record.name }} album cover" />
+    {% else %}
+      <img src="{% static 'images/default-album-cover.svg' %}" alt="Default album cover" />
+    {% endif %}
+  </div>
+  <div class="record-details">
+    <h1>{{ record.name }}</h1>
+    <h2>by {{ record.artist }}</h2>
+    <p><strong>Genre:</strong> {{ record.genre }}</p>
+    <p><strong>Released:</strong> {{ record.release_date }}</p>
+  </div>
+</section>
+{% endblock %}
