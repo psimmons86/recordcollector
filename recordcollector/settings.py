@@ -11,9 +11,14 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+env = environ.Env()
+environ.Env.read_env(BASE_DIR / '.env')
 
 
 # Quick-start development settings - unsuitable for production
@@ -78,9 +83,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'recordcollector',
-        'USER': 'neondb_owner',
-        'PASSWORD': 'npg_NH6PexLF4BZy',
-        'HOST': 'ep-orange-tree-aahcmexj-pooler.westus3.azure.neon.tech',
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PW'),
+        'HOST': env('DB_HOST'),
         'PORT': '5432',
         'OPTIONS': {
             'sslmode': 'require',

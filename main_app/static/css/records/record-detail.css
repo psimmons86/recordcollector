@@ -1,5 +1,5 @@
 .record-container {
-  padding: 35px 30px;
+  padding: 35px 30px 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -61,4 +61,110 @@
   .record-details {
     text-align: left;
   }
+}
+
+.listening-container {
+  padding: 15px 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.listenings {
+  width: 100%;
+  max-width: 600px;
+  background-color: var(--button-bg);
+  padding: 20px;
+  border-radius: var(--card-border-radius);
+  border: var(--borders);
+  box-shadow: var(--card-box-shadow);
+}
+
+.subsection-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.subsection-title img {
+  width: 24px;
+  height: 24px;
+}
+
+.subsection-title h2 {
+  margin: 0;
+  color: var(--text-color);
+}
+
+.subsection-content {
+  margin: 15px 0;
+}
+
+.listenings h3 {
+  font-size: var(--font-l);
+  margin: 20px 0 10px;
+  color: var(--text-color);
+}
+
+.listenings table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  border: var(--borders);
+  border-radius: var(--card-border-radius);
+  overflow: hidden;
+  box-shadow: var(--card-box-shadow);
+  background-color: white;
+}
+
+.listenings th {
+  font-size: var(--font-reg);
+  padding: 12px;
+  text-align: left;
+  background-color: var(--nav-bg);
+  color: var(--text-color);
+  border-bottom: var(--borders);
+}
+
+.listenings td {
+  font-size: var(--font-reg);
+  padding: 12px;
+  border-bottom: var(--borders);
+}
+
+.listenings tr:last-child td {
+  border-bottom: none;
+}
+
+.listenings form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: white;
+  padding: 20px;
+  border-radius: var(--card-border-radius);
+  border: var(--borders);
+  box-shadow: var(--card-box-shadow);
+}
+
+.listenings form p {
+  margin: 0;
+}
+
+.listenings form label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: var(--text-color);
+}
+
+.listenings form input,
+.listenings form select {
+  margin-top: 5px;
+  padding: 8px;
+  font-size: var(--font-reg);
+  border: var(--borders);
+  border-radius: 5px;
+  width: 100%;
 }
