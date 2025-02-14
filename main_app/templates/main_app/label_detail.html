@@ -1,0 +1,56 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/form.css' %}" />
+{% endblock %} 
+
+{% block content %}
+<div class="page-header">
+  <h1>{{ label.name }}</h1>
+  <img src="{% static 'images/record-logo.svg' %}" alt="Record label icon" />
+</div>
+
+<div class="card">
+  <div class="card-content">
+    <h2>Label Details</h2>
+    <p><strong>Country:</strong> {{ label.country }}</p>
+    <p><strong>Website:</strong> <a href="{{ label.website }}" target="_blank">{{ label.website }}</a></p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-content">
+    <h2>Records Released by {{ label.name }}</h2>
+    {% if label.record_set.all %}
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Artist</th>
+            <th>Genre</th>
+            <th>Release Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for record in label.record_set.all %}
+            <tr>
+              <td><a href="{% url 'record-detail' record.id %}">{{ record.name }}</a></td>
+              <td>{{ record.artist }}</td>
+              <td>{{ record.genre }}</td>
+              <td>{{ record.release_date }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No records associated with this label yet.</p>
+    {% endif %}
+  </div>
+</div>
+
+<div class="card-action">
+  <a href="{% url 'label-update' label.id %}" class="btn warn">Edit</a>
+  <a href="{% url 'label-delete' label.id %}" class="btn danger">Delete</a>
+</div>
+{% endblock %}

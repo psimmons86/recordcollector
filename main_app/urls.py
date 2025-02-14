@@ -4,6 +4,13 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    # Label URLs
+    path('labels/', views.LabelList.as_view(), name='label-index'),
+    path('labels/<int:pk>/', views.LabelDetail.as_view(), name='label-detail'),
+    path('labels/create/', views.LabelCreate.as_view(), name='label-create'),
+    path('labels/<int:pk>/update/', views.LabelUpdate.as_view(), name='label-update'),
+    path('labels/<int:pk>/delete/', views.LabelDelete.as_view(), name='label-delete'),
+    # Existing URLs
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
     path('records/', views.record_index, name='record-index'),

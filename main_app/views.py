@@ -1,8 +1,27 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Record
+from django.views.generic import ListView, DetailView
+from .models import Record, Label
 from .forms import ListeningForm
+
+class LabelList(ListView):
+    model = Label
+
+class LabelDetail(DetailView):
+    model = Label
+
+class LabelCreate(CreateView):
+    model = Label
+    fields = ['name', 'country', 'website']
+
+class LabelUpdate(UpdateView):
+    model = Label
+    fields = ['name', 'country', 'website']
+
+class LabelDelete(DeleteView):
+    model = Label
+    success_url = '/labels/'
 
 class RecordCreate(CreateView):
     model = Record

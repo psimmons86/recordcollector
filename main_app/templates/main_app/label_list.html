@@ -1,0 +1,33 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/form.css' %}" />
+{% endblock %} 
+
+{% block content %}
+<div class="page-header">
+  <h1>Record Labels</h1>
+  <img src="{% static 'images/record-logo.svg' %}" alt="Record label icon" />
+</div>
+
+<section class="card-container">
+  {% for label in label_list %}
+  <div class="card">
+    <a href="{% url 'label-detail' label.id %}">
+      <div class="card-content">
+        <h2>{{ label.name }}</h2>
+        <p>{{ label.country }}</p>
+        <p><a href="{{ label.website }}" target="_blank">Visit Website</a></p>
+      </div>
+    </a>
+  </div>
+  {% empty %}
+    <h3>No labels added yet.</h3>
+  {% endfor %}
+</section>
+
+<div class="page-header">
+  <a href="{% url 'label-create' %}" class="btn submit">Add a Label</a>
+</div>
+{% endblock %}

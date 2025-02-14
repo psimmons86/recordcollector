@@ -1,6 +1,17 @@
 from django.db import models
 from django.urls import reverse
 
+class Label(models.Model):
+    name = models.CharField(max_length=100)
+    country = models.CharField(max_length=50)
+    website = models.URLField(max_length=200)
+    
+    def __str__(self):
+        return f"{self.name} ({self.country})"
+        
+    def get_absolute_url(self):
+        return reverse('label-detail', kwargs={'pk': self.id})
+
 TIMES = (
     ('M', 'Morning'),
     ('A', 'Afternoon'),
@@ -15,6 +26,7 @@ class Record(models.Model):
     genre = models.CharField(max_length=100)
     release_date = models.DateField()
     album_cover = models.ImageField(upload_to='album_covers/', blank=True, null=True)
+    labels = models.ManyToManyField(Label)
 
     def __str__(self):
         return f"{self.name} - {self.genre} - {self.release_date}"
@@ -34,4 +46,3 @@ class Listening(models.Model):
 
     def __str__(self):
         return f"{self.get_time_display()} on {self.date}"
-    
