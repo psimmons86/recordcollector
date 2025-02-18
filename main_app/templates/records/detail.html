@@ -61,4 +61,51 @@
     {% endif %}
   </section>
 </div>
+
+<div class="label-container">
+  <section class="labels">
+    <div class="subsection-title">
+      <h2>Record Labels</h2>
+      <img src="{% static 'images/record-logo.svg' %}" alt="Record icon" />
+    </div>
+    
+    <h3>{{ record.name }}'s Labels</h3>
+    <div class="subsection-content">
+      {% if record.labels.count %}
+        {% for label in record.labels.all %}
+          <div class="label-container">
+            <a href="{% url 'label-detail' label.id %}">
+              <p>{{ label.name }} ({{ label.country }})</p>
+            </a>
+            <form action="{% url 'remove-label' record.id label.id %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn danger">Remove Label</button>
+            </form>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="no-labels">{{ record.name }} doesn't have any labels!</p>
+      {% endif %}
+    </div>
+
+    <h3>Available Labels</h3>
+    <div class="subsection-content">
+      {% if labels.count %}
+        {% for label in labels.all %}
+          <div class="label-container">
+            <a href="{% url 'label-detail' label.id %}">
+              <p>{{ label.name }} ({{ label.country }})</p>
+            </a>
+            <form action="{% url 'associate-label' record.id label.id %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn submit">Add Label</button>
+            </form>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="all-labels">{{ record.name }} already has all the available labels 🎵</p>
+      {% endif %}
+    </div>
+  </section>
+</div>
 {% endblock %}

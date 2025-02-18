@@ -168,3 +168,61 @@
   border-radius: 5px;
   width: 100%;
 }
+
+.label-container {
+  padding: 15px 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.labels {
+  width: 100%;
+  max-width: 600px;
+  background-color: var(--button-bg);
+  padding: 20px;
+  border-radius: var(--card-border-radius);
+  border: var(--borders);
+  box-shadow: var(--card-box-shadow);
+}
+
+.labels h3 {
+  font-size: var(--font-l);
+  margin: 20px 0 10px;
+  color: var(--text-color);
+}
+
+.label-container .label-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: var(--card-border-radius);
+  border: var(--borders);
+  box-shadow: var(--card-box-shadow);
+}
+
+.label-container .label-container a {
+  text-decoration: none;
+}
+
+.label-container .label-container p {
+  margin: 0;
+  color: var(--text-color);
+  font-size: var(--font-reg);
+}
+
+.label-container .label-container form {
+  margin: 0;
+}
+
+.no-labels,
+.all-labels {
+  text-align: center;
+  color: var(--text-color);
+  font-size: var(--font-reg);
+  margin: 20px 0;
+}

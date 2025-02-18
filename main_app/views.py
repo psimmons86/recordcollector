@@ -25,7 +25,7 @@ class LabelDelete(DeleteView):
 
 class RecordCreate(CreateView):
     model = Record
-    fields = '__all__'
+    fields = ['name', 'artist', 'genre', 'release_date', 'album_cover']
 
 class RecordUpdate(UpdateView):
     model = Record
@@ -42,10 +42,13 @@ def record_index(request):
 
 def record_detail(request, record_id):
     record = Record.objects.get(id=record_id)
+    # Get labels the record doesn't have
+    labels_record_doesnt_have = Label.objects.exclude(id__in=record.labels.all().values_list('id'))
     listening_form = ListeningForm()
     return render(request, 'records/detail.html', {
         'record': record, 
-        'listening_form': listening_form
+        'listening_form': listening_form,
+        'labels': labels_record_doesnt_have
     })
 
 def add_listening(request, record_id):
@@ -54,6 +57,14 @@ def add_listening(request, record_id):
         new_listening = form.save(commit=False)
         new_listening.record_id = record_id
         new_listening.save()
+    return redirect('record-detail', record_id=record_id)
+
+def associate_label(request, record_id, label_id):
+    Record.objects.get(id=record_id).labels.add(label_id)
+    return redirect('record-detail', record_id=record_id)
+
+def remove_label(request, record_id, label_id):
+    Record.objects.get(id=record_id).labels.remove(label_id)
     return redirect('record-detail', record_id=record_id)
 
 def about(request):
